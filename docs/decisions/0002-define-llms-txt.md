@@ -14,10 +14,12 @@ tags: ["documentation", "ai", "workflow"]
 ## Context and Problem Statement
 
 Future collaborators and AI agents need a single, machine-readable entry point that
-explains how to spin up Vibe ADR practices inside any project. Right now, agents rely
+explains how to implement Vibe ADR practices inside any project. Right now, agents rely
 on README.md excerpts, which are verbose for automation and hard to keep aligned
 across repositories. The llmstxt.org convention offers a standard file (`llms.txt`) for
-agent bootstrapping, but we have not adopted it yet.
+agent onboarding, providing clear guidance on repo structure, required files, and setup
+steps. We need a curated `llms.txt` that documents the Vibe ADR workflow itself — not
+as part of the bootstrap, but as the _documentation that guides the bootstrap process_.
 
 ## Vibe Context
 
@@ -40,20 +42,25 @@ instructions honor our calm, intentional tone.
 ## Decision Outcome
 
 Chosen option: **"Publish a curated `llms.txt` at the repository root"**, because it
-gives agents a predictable, standards-aligned bootstrap file that points directly to
-the assets they need to work with Vibe ADR.
+provides agents with a predictable, standards-aligned guide that explains the Vibe ADR
+workflow and points them to the assets they need to understand how to implement it.
+Importantly, `llms.txt` itself is _documentation about_ the bootstrap process — not an
+artifact that gets added _during_ the bootstrap.
 
 ### Consequences
 
-- Good: Standardizes AI onboarding with a discoverable, crawlable format
-- Good: Keeps llms.txt changes tied to ADR history and pull requests
+- Good: Standardizes AI onboarding with a discoverable, standards-based format
+- Good: Keeps workflow guidance version-controlled and linked to ADR history
+- Good: Agents can quickly understand what files to create and when
 - Bad: Introduces another document that can drift without regular review
+- Neutral: `llms.txt` lives in the reference repo; when bootstrapping a new project,
+  agents read it to understand what to create (ADRs, template, directories, etc.)
 
 ### Confirmation
 
-- Add `llms.txt` with the instructions outlined here and commit alongside this ADR
-- Validate formatting with the `llmstxt.org` guidance or community validators when
-  available
+- Add `llms.txt` with clear instructions on bootstrapping Vibe ADR and commit alongside this ADR
+- Validate formatting against the `llmstxt.org` guidance
+- Verify that a new agent, reading only `llms.txt`, can successfully bootstrap Vibe ADR in a blank repo
 - Reference this ADR in future updates to keep the file anchored to the decision
 
 ---
@@ -62,13 +69,15 @@ the assets they need to work with Vibe ADR.
 
 ### Publish `llms.txt` (Chosen)
 
-Following the llmstxt.org structure, define scope, context files, and setup steps in a
-root-level artifact so any agent can locate Vibe ADR assets instantly.
+Following the llmstxt.org structure, define scope, required files, and setup steps in a
+root-level artifact so any agent can understand the Vibe ADR workflow and bootstrap it
+in a new repository.
 
 - Good: Speaks the standard language emerging around agent onboarding
-- Good: Lets other projects reuse the same instructions with minimal edits
+- Good: Lets other projects reuse the same workflow guidance with minimal edits
+- Good: Makes it crystal clear what files to create (not what to add from this repo)
 - Neutral: Requires new contributors to learn the llmstxt schema
-- Bad: Adds upkeep each time onboarding changes
+- Bad: Adds upkeep each time onboarding guidance changes
 
 ### Depend on README.md and ADRs
 
@@ -124,10 +133,15 @@ Chosen level: **strict**
 
 ### Implementation Sequence
 
-1. Copy template guidance into a new `llms.txt`
-2. Outline instructions for bootstrapping Vibe ADR in new or existing repos
-3. Add validation notes or commands for agents to confirm setup
-4. Keep README.md references aligned with llms.txt updates
+1. Create `llms.txt` at the repository root with clear sections for project overview,
+   required files to create during bootstrap, setup checklist, and workflow expectations
+2. Document that bootstrapping Vibe ADR in a new repo requires creating:
+   - `README.md` (project vibe and north star)
+   - `docs/decisions/` directory
+   - `docs/decisions/VIBE_ADR_TEMPLATE.md` (copy of template into each project's decisions folder)
+   - `docs/decisions/0001-adopt-vibe-adr.md` (first ADR decision)
+3. Ensure `llms.txt` includes links to this reference repo's actual ADRs and template for examples
+4. Keep README.md references aligned with `llms.txt` updates
 
 ### Ownership
 
