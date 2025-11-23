@@ -34,7 +34,7 @@ When cloning the workflow into another repo:
 
 - Copy this repository’s `llms.txt`, adjust links for your project, and place it at the
   root.
-- Pull in `templates/VIBE_ADR_TEMPLATE.md` and start with ADR
+- Pull in `docs/decisions/VIBE_ADR_TEMPLATE.md` and start with ADR
   `docs/decisions/0001-adopt-vibe-adr.md` as the first record.
 - Keep the copied `llms.txt` and ADRs referenced in the new project’s README for
   discoverability.
@@ -75,6 +75,7 @@ Each ADR captures a single meaningful decision:
 - **Context:** What problem are we solving?
 - **Decision:** What’s our choice and why?
 - **Alternatives:** What did we reject?
+- **Anti-Goals & Guardrails:** What is explicitly out of scope and which constraints are non-negotiable?
 - **Consequences:** Trade-offs, pros/cons.
 - **Commit Links:** Code that implements it.
 - **Vibe Summary:** The intuitive or emotional principle.

@@ -42,6 +42,17 @@ Chosen option: **"Adopt the Vibe ADR template and workflow"**, because it balanc
 structure, vibe alignment, and accessibility for both humans and AI agents while
 keeping version control history close to the implementation changes.
 
+### Anti-Goals & Guardrails
+
+- **Anti-Goals**
+  - Do not adopt external ADR SaaS tools or knowledge bases for canonical decisions.
+  - Do not add ceremony that makes day-to-day contributions feel gated or slow.
+  - Do not duplicate decision narratives in parallel docs that can drift from ADRs.
+- **Guardrails**
+  - Keep every ADR under `docs/decisions/` using sequential, zero-padded filenames.
+  - Require authors to start from `docs/decisions/VIBE_ADR_TEMPLATE.md` (or its copy) and trim unused sections.
+  - Treat the `Confirmation` section as binding: lint and link checks must stay listed and enforced.
+
 ### Consequences
 
 - Good: Establishes a single, predictable location for every future ADR
@@ -94,7 +105,7 @@ Chosen level: **flexible**
 - Primary tool: GPT-5 Codex CLI
 - Model/version: GPT-5 (Codex CLI harness)
 - Parameters: Default harness settings
-- Context files: README.md, docs/decisions/\*.md, templates/VIBE_ADR_TEMPLATE.md
+- Context files: README.md, docs/decisions/\*.md, docs/decisions/VIBE_ADR_TEMPLATE.md
 
 ## Test Expectations
 

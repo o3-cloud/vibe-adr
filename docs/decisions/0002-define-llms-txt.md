@@ -47,6 +47,17 @@ workflow and points them to the assets they need to understand how to implement 
 Importantly, `llms.txt` itself is _documentation about_ the bootstrap process — not an
 artifact that gets added _during_ the bootstrap.
 
+### Anti-Goals & Guardrails
+
+- **Anti-Goals**
+  - Do not embed the entire README.md or ADR content verbatim inside `llms.txt`.
+  - Do not describe repo-specific bootstrap automation; this file explains the pattern, not per-project deliverables.
+  - Do not treat `llms.txt` as an editable checklist during bootstrap—it remains reference documentation.
+- **Guardrails**
+  - `llms.txt` must live at the repository root and follow the current llmstxt.org schema.
+  - It must link to `README.md`, `docs/decisions/`, and the ADR template so agents can pull canonical context.
+  - Updates to onboarding steps must reference this ADR and keep lint/link validation commands intact.
+
 ### Consequences
 
 - Good: Standardizes AI onboarding with a discoverable, standards-based format

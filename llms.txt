@@ -1,6 +1,6 @@
 # llms.txt for Vibe ADR
 version: 1.0
-last-updated: 2025-10-28
+last-updated: 2025-11-23
 
 ## OVERVIEW
 - Purpose: help human and AI collaborators adopt the Vibe ADR workflow quickly and consistently.
@@ -19,7 +19,7 @@ When setting up Vibe ADR in a new or existing project, create these files and di
 1. **README.md** — Draft project purpose, philosophy, and guiding principles (not implementation details)
 2. **docs/decisions/** — Create this directory to hold all ADRs
 3. **docs/decisions/VIBE_ADR_TEMPLATE.md** — Copy the template from this repo into your project
-4. **docs/decisions/0001-adopt-vibe-adr.md** — Draft your first ADR using the template
+4. **docs/decisions/0001-adopt-vibe-adr.md** — Draft your first ADR using the template, and populate the **Anti-Goals & Guardrails** section beneath the Decision Outcome
 5. **llms.txt** — Copy this file to your project root and update repository-specific details
 
 **Important:** `llms.txt` is documentation *about* how to bootstrap Vibe ADR, not an artifact
@@ -49,6 +49,7 @@ When working with AI agents on this project:
 
 - **Load context first:** Always include README.md, relevant ADRs, and VIBE_ADR_TEMPLATE.md
 - **Trim the template:** Remove unused sections from each ADR aggressively; every project is different
+- **Surface boundaries:** Populate Anti-Goals & Guardrails, then cite them when prompting agents or running Claude commands
 - **Document learnings:** Update the `Feedback Log` section with insights discovered during implementation
 - **Link commits:** Reference ADR IDs in commit messages (e.g., `docs: add ADR-0001 adoption guidance`)
 - **Validate tests:** Record confirmation evidence in each ADR's `Confirmation` section
@@ -59,8 +60,9 @@ Before committing ADRs and llms.txt:
 
 - [ ] Run `npx markdownlint "**/*.md"` to catch formatting issues
 - [ ] Run `npx markdown-link-check README.md docs/decisions/**/*.md` to validate links
+- [ ] Confirm every ADR includes an **Anti-Goals & Guardrails** section with both lists filled
 - [ ] Verify ADR numbering is sequential with zero-padding (0001, 0002, etc.)
-- [ ] Confirm VIBE_ADR_TEMPLATE.md is in docs/decisions/ (not in a shared templates/ folder)
+- [ ] Confirm VIBE_ADR_TEMPLATE.md lives in docs/decisions/ as the single source of truth
 - [ ] Check that llms.txt references are accurate for your project
 
 ## TRACEABILITY
